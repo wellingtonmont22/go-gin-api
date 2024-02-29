@@ -5,3 +5,12 @@ type Person struct {
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
 }
+
+type Tabler interface {
+	TableName() string
+}
+
+// TableName overrides the table name used by Person to `persons`
+func (Person) TableName() string {
+	return "persons"
+}
