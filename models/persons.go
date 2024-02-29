@@ -2,6 +2,6 @@ package models
 
 type Person struct {
 	ID        uint   `json:"id" gorm:"primary_key"`
-	FirstName string `json:"name"`
+	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
 }

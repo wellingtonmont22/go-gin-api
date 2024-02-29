@@ -13,6 +13,7 @@ func main() {
 	models.ConnectDatabase()
 
 	r.GET("/persons", controllers.FindPersons)
+	r.POST("/persons", controllers.CreatePerson)
 
 	r.Run() // listen and serve on 0.0.0.0:8080
 }
