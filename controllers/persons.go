@@ -50,3 +50,16 @@ func UpdatePerson(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": person})
 }
+
+func DeletePerson(c *gin.Context) {
+	var person models.Person
+
+	if err := models.DB.Where("id = ?", c.Param("id")).First(&person).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	models.DB.Delete(person)
+
+	c.JSON(http.StatusOK, gin.H{"deleted": true})
+}
